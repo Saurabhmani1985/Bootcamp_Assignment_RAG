@@ -1,0 +1,11 @@
+[project]
+name = "bootcamp-diagnostic-multimodal-rag"
+version = "1.0.0"
+description = "Multimodal RAG system for ECU diagnostic PDF"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = ["--tb=short", "-q"]

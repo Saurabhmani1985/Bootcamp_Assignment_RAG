@@ -1,0 +1,38 @@
+# API keys -- NEVER commit
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Vector store data (large, generated locally)
+data/chroma/
+data/raw/
+*.db
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log
+logs/
+tmp/
+
+# Model weight cache (very large)
+.cache/
+*.bin
+*.safetensors
+
+# Test output
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/

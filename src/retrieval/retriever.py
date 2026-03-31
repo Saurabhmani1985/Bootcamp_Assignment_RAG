@@ -47,9 +47,23 @@ class Retriever:
             self.embedder.embed_query(question),
             top_k=top_k, collection=col,
             chunk_type_filter=chunk_type_filter)
-        llm_r = self.llm.generate(
-            question=question,
-            context=self.llm.format_context(results))
+        llm_error = None
+        try:
+            llm_r = self.llm.generate(
+                question=question,
+                context=self.llm.format_context(results))
+            answer = llm_r.answer
+            model = llm_r.model
+            llm_input_tokens = llm_r.input_tokens
+            llm_output_tokens = llm_r.output_tokens
+            llm_latency_ms = llm_r.latency_ms
+        except Exception as e:
+            llm_error = str(e)
+            answer = self._build_retrieval_only_answer(results, llm_error)
+            model = "retrieval-only-fallback"
+            llm_input_tokens = 0
+            llm_output_tokens = 0
+            llm_latency_ms = 0.0
         tc = {}
         for r in results:
             tc[r["chunk_type"]] = tc.get(r["chunk_type"], 0) + 1
@@ -60,17 +74,37 @@ class Retriever:
                 excerpt=r["text"][:300].replace("\n", " "))
             for r in results]
         return QueryResult(
-            question=question, answer=llm_r.answer,
+            question=question, answer=answer,
             sources=sources,
             retrieval_stats={
                 "total_retrieved": len(results),
                 "by_type": tc, "collection": col,
                 "top_k_requested": top_k,
-                "llm_input_tokens": llm_r.input_tokens,
-                "llm_output_tokens": llm_r.output_tokens,
-                "llm_latency_ms": llm_r.latency_ms},
+                "llm_input_tokens": llm_input_tokens,
+                "llm_output_tokens": llm_output_tokens,
+                "llm_latency_ms": llm_latency_ms,
+                "fallback_reason": llm_error},
             latency_ms=round((time.perf_counter() - t0) * 1000, 1),
-            model=llm_r.model)
+            model=model)
+
+    def _build_retrieval_only_answer(self, results: list[dict], err: str) -> str:
+        if not results:
+            return (
+                "The LLM is currently unavailable and no relevant context "
+                "was retrieved to answer the question. "
+                f"Provider error: {err}")
+        lines = [
+            "LLM generation is temporarily unavailable. "
+            "Showing top retrieved evidence instead:"]
+        for i, r in enumerate(results[:5], 1):
+            excerpt = r["text"].replace("\n", " ").strip()
+            lines.append(
+                f"{i}. {r['source']} (page {r['page']}, "
+                f"{r['chunk_type']}, score {r['score']:.2f}): "
+                f"{excerpt[:260]}")
+        lines.append("Use this evidence to proceed until LLM credits are restored.")
+        lines.append(f"Provider error: {err}")
+        return "\n".join(lines)
 
 
 _ret = None

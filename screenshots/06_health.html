@@ -1,0 +1,41 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Health Endpoint — GET /health</title>
+<style>
+body { font-family: "DejaVu Sans Mono", monospace; background: #0b1020; color: #e8ecf3; margin: 0; }
+.wrap { max-width: 1200px; margin: 20px auto; padding: 24px; }
+h1 { margin: 0 0 10px; color: #8fe3a2; font-size: 30px; }
+.cmd { background: #141b31; border-left: 4px solid #66d9ef; padding: 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
+pre { background: #111827; border: 1px solid #334155; padding: 14px; border-radius: 8px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+.meta { color: #c7d2fe; margin: 10px 0 14px; }
+</style></head>
+<body><div class="wrap">
+<h1>Health Endpoint — GET /health</h1>
+<div class="meta">Captured from live local API on http://localhost:8000</div>
+<div class="cmd">$ curl http://localhost:8000/health</div>
+<pre>{
+  "status": "ok",
+  "version": "1.0.0",
+  "uptime_seconds": 1114.1,
+  "indexed_documents": 2,
+  "total_chunks": 576,
+  "index_size_mb": 6.1,
+  "components": {
+    "vector_store": {
+      "status": "ok",
+      "detail": "ChromaDB -- 576 chunks in 'diagnostic_rag'"
+    },
+    "embedding_model": {
+      "status": "ok",
+      "detail": "sentence-transformers/all-MiniLM-L6-v2 (dim=384)"
+    },
+    "llm": {
+      "status": "ok",
+      "detail": "claude-sonnet-4-6"
+    },
+    "vision_model": {
+      "status": "ok",
+      "detail": "claude-opus-4-5"
+    }
+  }
+}</pre>
+</div></body></html>

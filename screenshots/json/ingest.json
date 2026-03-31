@@ -1,0 +1,1 @@
+{"status":"success","filename":"Diagnostic_Document.pdf","collection":"diagnostic_rag","total_pages":86,"chunk_counts":{"text":82,"table":203,"image":125,"total":410},"processing_time_s":37.5,"warnings":[],"message":"Indexed 410 chunks from 86 pages."}

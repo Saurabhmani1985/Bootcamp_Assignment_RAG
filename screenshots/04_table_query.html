@@ -1,0 +1,76 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Table Query Result — POST /query (table)</title>
+<style>
+body { font-family: "DejaVu Sans Mono", monospace; background: #0b1020; color: #e8ecf3; margin: 0; }
+.wrap { max-width: 1200px; margin: 20px auto; padding: 24px; }
+h1 { margin: 0 0 10px; color: #8fe3a2; font-size: 30px; }
+.cmd { background: #141b31; border-left: 4px solid #66d9ef; padding: 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
+pre { background: #111827; border: 1px solid #334155; padding: 14px; border-radius: 8px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+.meta { color: #c7d2fe; margin: 10px 0 14px; }
+</style></head>
+<body><div class="wrap">
+<h1>Table Query Result — POST /query (table)</h1>
+<div class="meta">Captured from live local API on http://localhost:8000</div>
+<div class="cmd">$ curl -X POST http://localhost:8000/query -H 'Content-Type: application/json' -d '{"question":"List fault codes in STOP_ENGINE_GROUP_FAULT table","chunk_type_filter":"table"}'</div>
+<pre>{
+  "question": "List fault codes in STOP_ENGINE_GROUP_FAULT table",
+  "answer": "## Response\n\nBased on the provided context, I am unable to answer this question.\n\nThe retrieved context does not contain any information about a **STOP_ENGINE_GROUP_FAULT** table. The context only includes:\n\n- Fault code `P3013` \u2014 ECO switch stuck fault (from Page 73)\n- Fault codes `P0263`, `P0272`, and `P0269` \u2014 Cylinder combustion imbalance faults (from Page 40)\n\nThere is **no STOP_ENGINE_GROUP_FAULT table** present in the retrieved context. To answer this question accurately, the relevant page containing that fault group table would need to be retrieved from the source documentation.",
+  "sources": [
+    {
+      "filename": "tmpkrzrxtk2.pdf",
+      "page": 73,
+      "chunk_type": "table",
+      "score": 0.5673,
+      "excerpt": "| CODE | FAULT NAME |  | DIAGNOSTIC TOOL |  | | --- | --- | --- | --- | --- | |  |  |  | DESCRIPTION |  | | P3013 | F_M_ECO_SW_STUCK | ECO switch stuck fault |  |  |"
+    },
+    {
+      "filename": "tmp2ciure4a.pdf",
+      "page": 73,
+      "chunk_type": "table",
+      "score": 0.5673,
+      "excerpt": "| CODE | FAULT NAME |  | DIAGNOSTIC TOOL |  | | --- | --- | --- | --- | --- | |  |  |  | DESCRIPTION |  | | P3013 | F_M_ECO_SW_STUCK | ECO switch stuck fault |  |  |"
+    },
+    {
+      "filename": "tmpgzk8f3j6.pdf",
+      "page": 73,
+      "chunk_type": "table",
+      "score": 0.5673,
+      "excerpt": "| CODE | FAULT NAME |  | DIAGNOSTIC TOOL |  | | --- | --- | --- | --- | --- | |  |  |  | DESCRIPTION |  | | P3013 | F_M_ECO_SW_STUCK | ECO switch stuck fault |  |  |"
+    },
+    {
+      "filename": "tmpkrzrxtk2.pdf",
+      "page": 40,
+      "chunk_type": "table",
+      "score": 0.5585,
+      "excerpt": "| CODE | FAULT NAME |  | DIAGNOSTIC TOOL DESCRIPTION | | --- | --- | --- | --- | | P0263 | Cylinder 1- Combustion Imbalance | Combustion Imbalance in cyl 1 |  | | P0272 | Cylinder 2- Combustion Imbalance | Combustion Imbalance in cyl 2 |  | | P0269 | Cylinder 3- Combustion Imbalance | Combustion Imb"
+    },
+    {
+      "filename": "tmp2ciure4a.pdf",
+      "page": 40,
+      "chunk_type": "table",
+      "score": 0.5585,
+      "excerpt": "| CODE | FAULT NAME |  | DIAGNOSTIC TOOL DESCRIPTION | | --- | --- | --- | --- | | P0263 | Cylinder 1- Combustion Imbalance | Combustion Imbalance in cyl 1 |  | | P0272 | Cylinder 2- Combustion Imbalance | Combustion Imbalance in cyl 2 |  | | P0269 | Cylinder 3- Combustion Imbalance | Combustion Imb"
+    },
+    {
+      "filename": "tmpgzk8f3j6.pdf",
+      "page": 40,
+      "chunk_type": "table",
+      "score": 0.5585,
+      "excerpt": "| CODE | FAULT NAME |  | DIAGNOSTIC TOOL DESCRIPTION | | --- | --- | --- | --- | | P0263 | Cylinder 1- Combustion Imbalance | Combustion Imbalance in cyl 1 |  | | P0272 | Cylinder 2- Combustion Imbalance | Combustion Imbalance in cyl 2 |  | | P0269 | Cylinder 3- Combustion Imbalance | Combustion Imb"
+    }
+  ],
+  "retrieval_stats": {
+    "total_retrieved": 6,
+    "by_type": {
+      "table": 6
+    },
+    "collection": "diagnostic_rag",
+    "top_k_requested": 6,
+    "llm_input_tokens": 916,
+    "llm_output_tokens": 154,
+    "llm_latency_ms": 4836.9
+  },
+  "latency_ms": 4874.5,
+  "model": "claude-sonnet-4-6"
+}</pre>
+</div></body></html>

@@ -1,0 +1,76 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Image Query Result — POST /query (image)</title>
+<style>
+body { font-family: "DejaVu Sans Mono", monospace; background: #0b1020; color: #e8ecf3; margin: 0; }
+.wrap { max-width: 1200px; margin: 20px auto; padding: 24px; }
+h1 { margin: 0 0 10px; color: #8fe3a2; font-size: 30px; }
+.cmd { background: #141b31; border-left: 4px solid #66d9ef; padding: 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
+pre { background: #111827; border: 1px solid #334155; padding: 14px; border-radius: 8px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+.meta { color: #c7d2fe; margin: 10px 0 14px; }
+</style></head>
+<body><div class="wrap">
+<h1>Image Query Result — POST /query (image)</h1>
+<div class="meta">Captured from live local API on http://localhost:8000</div>
+<div class="cmd">$ curl -X POST http://localhost:8000/query -H 'Content-Type: application/json' -d '{"question":"ECU pin connections for rail pressure sensor","chunk_type_filter":"image"}'</div>
+<pre>{
+  "question": "ECU pin connections for rail pressure sensor",
+  "answer": "## ECU Pin Connections for Rail Pressure Sensor\n\nBased on the retrieved context provided, **I cannot answer this question**.\n\nThe context supplied contains only information relating to the **AC (Air Conditioning) system circuits**, specifically:\n\n- ECU **Pin 39** \u2013 AC Demand Switch\n- ECU **Pin 32** \u2013 Trinary Switch\n- ECU **Pin 48** \u2013 AC Clutch Control / AC Magnetic Clutch\n\nThere is **no information in the provided context** regarding the ECU pin connections for the **rail pressure sensor**. To find this information, you would need to refer to:\n\n- The ECU wiring diagram section specifically covering **fuel system / high-pressure circuit sensors**\n- A page detailing the **common-rail pressure sensor** signal, supply, and ground pin assignments\n\nPlease provide the relevant page or section from the technical manual that covers the fuel rail pressure sensor circuit, and I will be able to give you a precise diagnostic answer.",
+  "sources": [
+    {
+      "filename": "tmp2ciure4a.pdf",
+      "page": 71,
+      "chunk_type": "image",
+      "score": 0.4193,
+      "excerpt": "# Image Analysis: ECU Wiring Diagram - AC Demand Circuit  ## 1. Type of Diagram **Partial wiring/circuit diagram** showing the AC (Air Conditioning) demand signal interface with the ECU.  ## 2. ECU Pin Numbers and Components  | ECU Pin | Connected Component | |---------|---------------------| | **39"
+    },
+    {
+      "filename": "tmp2ciure4a.pdf",
+      "page": 71,
+      "chunk_type": "image",
+      "score": 0.3502,
+      "excerpt": "# Image Analysis: AC Clutch Control Circuit Diagram  ## 1. Type of Diagram This is a **partial wiring/circuit diagram** showing the electrical connection between ECU pins and the AC magnetic clutch component.  ## 2. ECU Pin Numbers and Components  | Pin Number | Function/Label | |------------|------"
+    },
+    {
+      "filename": "tmp2ciure4a.pdf",
+      "page": 84,
+      "chunk_type": "image",
+      "score": 0.3404,
+      "excerpt": "# Image Analysis  ## 1. Type of Diagram This is **not a technical diagram** - it appears to be a **user interface element** or **status indicator screen**, likely from diagnostic software or a testing device display.  ## 2. Visual Elements - **Background**: Solid dark blue (navy) color bar - **Centr"
+    },
+    {
+      "filename": "tmp2ciure4a.pdf",
+      "page": 84,
+      "chunk_type": "image",
+      "score": 0.3026,
+      "excerpt": "# Image Analysis: Compressor Test Diagnostic Screen  ## 1. Type of Diagram This is a **diagnostic interface screen/software display** from an ECU diagnostic tool, not a wiring or circuit diagram. It appears to be a test menu page for compressor testing.  ## 2. Visible Labels and Parameters  ### Cont"
+    },
+    {
+      "filename": "tmp2ciure4a.pdf",
+      "page": 84,
+      "chunk_type": "image",
+      "score": 0.2996,
+      "excerpt": "# Image Analysis: ECU Diagnostic Interface Screen  ## 1. Type of Diagram This is a **Human-Machine Interface (HMI) screen capture** from an ECU diagnostic display panel, showing a real-time monitoring interface for cylinder speed parameters.  ## 2. Visible Labels and Elements  ### Left Panel - Funct"
+    },
+    {
+      "filename": "tmp2ciure4a.pdf",
+      "page": 71,
+      "chunk_type": "image",
+      "score": 0.2444,
+      "excerpt": "# Image Analysis: AC System Wiring Diagram  ## 1. Type of Diagram This is a **partial electrical wiring/circuit diagram** showing the air conditioning (AC) clutch control circuit.  ## 2. Components and Labels Identified  ### Pin/Reference Numbers: - **48** - Wire/circuit reference number - **39** - "
+    }
+  ],
+  "retrieval_stats": {
+    "total_retrieved": 6,
+    "by_type": {
+      "image": 6
+    },
+    "collection": "diagnostic_rag",
+    "top_k_requested": 6,
+    "llm_input_tokens": 2586,
+    "llm_output_tokens": 216,
+    "llm_latency_ms": 8851.9
+  },
+  "latency_ms": 8879.7,
+  "model": "claude-sonnet-4-6"
+}</pre>
+</div></body></html>

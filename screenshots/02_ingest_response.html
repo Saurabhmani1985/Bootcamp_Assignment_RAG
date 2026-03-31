@@ -1,0 +1,30 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Successful Ingestion — POST /ingest</title>
+<style>
+body { font-family: "DejaVu Sans Mono", monospace; background: #0b1020; color: #e8ecf3; margin: 0; }
+.wrap { max-width: 1200px; margin: 20px auto; padding: 24px; }
+h1 { margin: 0 0 10px; color: #8fe3a2; font-size: 30px; }
+.cmd { background: #141b31; border-left: 4px solid #66d9ef; padding: 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
+pre { background: #111827; border: 1px solid #334155; padding: 14px; border-radius: 8px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+.meta { color: #c7d2fe; margin: 10px 0 14px; }
+</style></head>
+<body><div class="wrap">
+<h1>Successful Ingestion — POST /ingest</h1>
+<div class="meta">Captured from live local API on http://localhost:8000</div>
+<div class="cmd">$ curl -X POST http://localhost:8000/ingest -F 'file=@sample_documents/Diagnostic_Document.pdf' -F 'collection=diagnostic_rag' -F 'use_vision=false'</div>
+<pre>{
+  "status": "success",
+  "filename": "Diagnostic_Document.pdf",
+  "collection": "diagnostic_rag",
+  "total_pages": 86,
+  "chunk_counts": {
+    "text": 82,
+    "table": 203,
+    "image": 125,
+    "total": 410
+  },
+  "processing_time_s": 37.5,
+  "warnings": [],
+  "message": "Indexed 410 chunks from 86 pages."
+}</pre>
+</div></body></html>

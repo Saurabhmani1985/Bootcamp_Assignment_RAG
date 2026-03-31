@@ -43,15 +43,16 @@ class Retriever:
         t0 = time.perf_counter()
         top_k = top_k or self.cfg.default_top_k
         col = collection or self.collection
+        query_embedding = self.embedder.embed_query(question)
         results = self.store.query(
-            self.embedder.embed_query(question),
+            query_embedding,
             top_k=top_k, collection=col,
             chunk_type_filter=chunk_type_filter)
         used_filter = chunk_type_filter
         if chunk_type_filter and not results:
             # If no chunks exist for the selected type, retry without filter.
             results = self.store.query(
-                self.embedder.embed_query(question),
+                query_embedding,
                 top_k=top_k, collection=col,
                 chunk_type_filter=None)
             used_filter = None

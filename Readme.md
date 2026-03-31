@@ -457,16 +457,37 @@ http://localhost:8000/docs
 
 ## 10. Screenshots
 
-The `screenshots/` folder contains evidence of the working system:
+The screenshots below are captured from the live local API and stored in the `screenshots/` folder.
 
-| File | Description |
-|---|---|
-| `01_swagger_ui.png` | Swagger UI at `/docs` showing all 5 endpoints listed |
-| `02_ingest_response.png` | Successful `POST /ingest` — 312 chunks indexed (248 text, 41 table, 23 image) |
-| `03_text_query.png` | `POST /query` text retrieval — fault code P0087 answer with page 28 source |
-| `04_table_query.png` | `POST /query` with `chunk_type_filter: "table"` — table chunks retrieved |
-| `05_image_query.png` | `POST /query` with `chunk_type_filter: "image"` — VLM wiring diagram descriptions |
-| `06_health.png` | `GET /health` — showing 1 indexed document, 312 total chunks, all OK |
+### 13. Swagger UI
+`/docs` page showing all endpoints.
+
+![Swagger UI -- /docs](screenshots/01_swagger_ui.png)
+
+### 14. Successful Ingestion
+`POST /ingest` call using the multimodal PDF and its response.
+
+![Successful Ingestion -- POST /ingest](screenshots/02_ingest_response.png)
+
+### 15. Text Query Result
+Query retrieving text-based chunks.
+
+![Text Query Result](screenshots/03_text_query.png)
+
+### 16. Table Query Result
+Query retrieving table-based chunks.
+
+![Table Query Result](screenshots/04_table_query.png)
+
+### 17. Image Query Result
+Query retrieving image-summary chunks.
+
+![Image Query Result](screenshots/05_image_query.png)
+
+### 18. Health Endpoint
+`GET /health` response showing indexed document count.
+
+![Health Endpoint](screenshots/06_health.png)
 
 ---
 
